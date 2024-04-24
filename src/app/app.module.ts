@@ -7,7 +7,7 @@ import { CountryService } from './services/country.service';
 import { CountryListComponent } from './country-list/country-list.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
-import { Chart1Component } from './chart1/chart1.component';
+import { CurrencyChartComponent } from './currency-chart/currency-chart.component';
 import { IndependentCountriesComponent } from './independent-countries/independent-countries.component';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { IndependentCountriesComponent } from './independent-countries/independe
     AppComponent,
     CountryListComponent,
     HomeComponent,
-    Chart1Component,
+    CurrencyChartComponent,
     IndependentCountriesComponent
   ],
   imports: [
