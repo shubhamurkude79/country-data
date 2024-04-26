@@ -1,6 +1,6 @@
 # CountryApp or country-data
 
-List of countries api call
+List of countries and World wide most common data
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.9.
 

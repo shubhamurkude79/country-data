@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { CurrencyChartComponent } from './currency-chart/currency-chart.component';
 import { IndependentCountriesComponent } from './independent-countries/independent-countries.component';
 import { UnMemberChartComponent } from './un-member-chart/un-member-chart.component';
+import { CountryListRoutingModule } from './country-list/country-list-routing.module';
+import { CountryListModule } from './country-list/country-list.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { UnMemberChartComponent } from './un-member-chart/un-member-chart.compon
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+    CountryListModule,
+    CountryListRoutingModule
   ],
   providers: [CountryService],
   bootstrap: [AppComponent]
