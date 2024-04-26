@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 const apiUrl = environment.apiUrl;
 const independentApiUrl = environment.independentApiUrl;
 const currencyUrl = environment.currencyUrl;
+const allDataUrl = environment.allDataUrl;
 
 @Injectable({
   providedIn: 'root',
@@ -27,5 +28,10 @@ export class CountryService {
   getCountriesCurrencyData(currency: string): Observable<any[]> {
     const url = `${currencyUrl}/${currency}`;
     return this.http.get<any[]>(url);
+  }
+
+  // UN Members of the World
+  getUNCountriesData(): Observable<any[]> {
+    return this.http.get<any[]>(allDataUrl);
   }
 }

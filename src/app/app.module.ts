@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CurrencyChartComponent } from './currency-chart/currency-chart.component';
 import { IndependentCountriesComponent } from './independent-countries/independent-countries.component';
+import { UnMemberChartComponent } from './un-member-chart/un-member-chart.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { IndependentCountriesComponent } from './independent-countries/independe
     CountryListComponent,
     HomeComponent,
     CurrencyChartComponent,
-    IndependentCountriesComponent
+    IndependentCountriesComponent,
+    UnMemberChartComponent
   ],
   imports: [
     BrowserModule,
