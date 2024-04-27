@@ -15,12 +15,12 @@
       </button>
   
       <!-- Collapsible wrapper -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
         <!-- Left links -->
         <ul class="navbar-nav me-3">
           <li class="nav-item">
-            <a class="nav-link active d-flex align-items-center" aria-current="page" href="#"><i
-                class="fas fa-bars pe-2"></i>Menu</a>
+            <a class="nav-link active d-flex align-items-center" aria-current="page" href="#">
+              <i class="fas fa-bars pe-2"></i>Menu</a>
           </li>
         </ul>
         <!-- Left links -->
@@ -30,17 +30,20 @@
             <a class="nav-link d-flex align-items-center" 
                 routerLink="/"
                 routerLinkActive="active">
-                Home</a>
+                <i class="fa-solid fa-house pe-2"></i> Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link d-flex align-items-center me-3"
                 routerLink="/country"
                 routerLinkActive="active">
-              <i class="fas fa-bookmark pe-2"></i> Country
+              <i class="fa-solid fa-earth-asia pe-2"></i> Country
             </a>
           </li>
+        </ul>
+          <ul class="navbar-nav me-3">
           <li class="nav-item">
-            <a class="nav-link d-flex align-items-center" href="#!">Sign In</a>
+            <a class="nav-link d-flex align-items-center" href="#!">
+              <i class="fa-solid fa-right-to-bracket pe-2"></i>Sign In</a>
           </li>
         </ul>
       </div>
