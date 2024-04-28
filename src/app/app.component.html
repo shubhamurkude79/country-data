@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
       <!-- Left links -->
       <ul class="navbar-nav me-3">
-        <li class="nav-item">
+        <li class="nav-item" (click)="toggleSidebar()">
           <a class="nav-link active d-flex align-items-center" aria-current="page" href="#">
             <i class="fas fa-bars pe-2"></i>Menu</a>
         </li>
@@ -46,5 +46,7 @@
   <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
+
+
 
 <router-outlet></router-outlet>

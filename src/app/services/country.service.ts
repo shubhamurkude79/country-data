@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 const apiUrl = environment.apiUrl;
 const independentApiUrl = environment.independentApiUrl;
@@ -12,7 +12,15 @@ const allDataUrl = environment.allDataUrl;
   providedIn: 'root',
 })
 export class CountryService {
+  private isOpenSubject = new BehaviorSubject<boolean>(true);
+  isOpen$ = this.isOpenSubject.asObservable();
+
   constructor(private http: HttpClient) {}
+
+  // Toggling of the sidebar
+  toggleSidebar() {
+    this.isOpenSubject.next(!this.isOpenSubject.value)
+  }
 
   getCountries(): Observable<any[]> {
     return this.http.get<any[]>(apiUrl);

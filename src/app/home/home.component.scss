@@ -1,7 +1,76 @@
-.card {
-    border-radius: 5px;
-    backdrop-filter: blur(20px); 
-    background-color: rgba(255, 255, 255, 0.071); 
-    box-shadow: 0 10px 10px rgba(129, 124, 124, 0.2);
-    margin: 20px;
+.container {
+    display: flex;
+
+    // side navbar 
+    .sidebar {
+        height: 100%;
+        width: 250px;
+        position: absolute;
+        z-index: 1;
+        top: auto;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        overflow-y: auto;/* Allow sidebar content to scroll if needed */
+        transition: width 0.5s;
+        padding-top: 60px;
+    }
+
+    .sidebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
+
+    // flex- container
+    .flex-container {
+        flex: 1;/* Flex-grow to fill remaining space */
+        display: flex;/* Use flexbox for the container */
+        flex-wrap: wrap;/* Allow flex items to wrap */
+        align-items: start;
+        transition: margin-left 0.5s; /* Transition margin-left for the flex container */
+
+        .card {
+            border-radius: 5px;
+            backdrop-filter: blur(20px);
+            background-color: rgba(255, 255, 255, 0.071);
+            box-shadow: 0 10px 10px rgba(129, 124, 124, 0.2);
+            margin: 15px;
+            height: auto;
+            padding: 5px;
+        }
+    }
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav 
+  (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+    .sidebar a {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .sidebar {
+        display: none;
+    }
+    .sidebar a {
+        display: none;
+    }
+    .sidebar .closebtn {
+        display: none;
+    }
+    .openbtn {
+        display: none;
+    }
 }

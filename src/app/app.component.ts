@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CountryService } from './services/country.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'country-app';
+  constructor(private SidebarToggleService: CountryService) {}
+
+  toggleSidebar() {
+    this.SidebarToggleService.toggleSidebar();
+  }
 }

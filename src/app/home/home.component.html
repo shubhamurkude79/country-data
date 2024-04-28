@@ -1,5 +1,14 @@
+<!-- Side nav bar -->
 <div class="container">
-    <div class="row">
+    <div [ngStyle]="{ width: getSidebarWidth() }" class="sidebar">
+      <!-- Sidebar content -->
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
+    <div [ngStyle]="{ 'margin-left': getFlexContainerMargin() }" class="flex-container">
+      <!-- Flex container content -->
         <div class="col-md card">
             <app-currency-chart></app-currency-chart>
         </div>
@@ -10,4 +19,4 @@
             <app-independent-countries></app-independent-countries>
         </div>
     </div>
-</div>
+  </div>
