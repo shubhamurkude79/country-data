@@ -47,8 +47,11 @@ export class UnMemberChartComponent implements OnInit {
         type: 'pie',
         colors: {
           'UN Members': '#9bc400',
-          'non-UN Members': '#8076a3',
+          'non-UN Members': '#9080ff',
         },
+      },
+      title: {
+        text: '% of UN Members in the World', // Specify the title text here
       }
     });
   }

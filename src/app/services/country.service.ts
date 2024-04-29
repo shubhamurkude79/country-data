@@ -12,7 +12,7 @@ const allDataUrl = environment.allDataUrl;
   providedIn: 'root',
 })
 export class CountryService {
-  private isOpenSubject = new BehaviorSubject<boolean>(true);
+  private isOpenSubject = new BehaviorSubject<boolean>(false);
   isOpen$ = this.isOpenSubject.asObservable();
 
   constructor(private http: HttpClient) {}

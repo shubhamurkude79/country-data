@@ -20,22 +20,25 @@ export class PopulationChartComponent implements OnInit {
 
   fetchCountryPopulationData() {
     this.countryService.getUNCountriesData().subscribe(item => {
-       this.populationData = item.filter(data => data.population > 200000000)
+       this.populationData = item.filter(data => data.population > 126000000)
       .map(({name, population}) => ({name: name.common, population}));
       this.generateBarChart();
     });
   }
 
   generateBarChart() {
+    const sortedData = this.populationData.slice().sort((a, b) => b.population - a.population);
     const chart = c3.generate({
       bindto: '#populationChart',
       data: {
-        json: this.populationData, // Use your filtered data as JSON input
+        json: sortedData, // Use your filtered data as JSON input
+        order: 'asc',
         keys: {
           x: 'name', // Set 'name' as the x-axis
           value: ['population'] // Set 'population' as the y-axis
         },
         type: 'bar',
+        labels: true,
           colors: {
             population:'#178c7585'
           }
@@ -44,6 +47,9 @@ export class PopulationChartComponent implements OnInit {
         x: {
           type: 'category' // Set x-axis type as category (for country names)
         }
+      },
+      title: {
+        text: 'Highest Population of the top 10 Countries', // Specify the title text here
       }
     });
   }

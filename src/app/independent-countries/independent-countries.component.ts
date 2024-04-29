@@ -55,13 +55,16 @@ export class IndependentCountriesComponent implements OnInit {
         ],
         type: 'donut',
         colors: {
-          Independent: '#9bc400',
-          'Non-Independent': '#8076a3',
+          'Independent': '#9bc400',
+          'Non-Independent': '#9080ff',
         },
       },
       donut: {
         title: 'Countries',
       },
+      title: {
+        text: '% of Independent Countries in the World', // Specify the title text here
+      }
     });
   }
 }

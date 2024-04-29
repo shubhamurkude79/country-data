@@ -15,4 +15,10 @@
     left: 0;
   }
 
+  @media screen and (max-width:991px){
+    #nav-menu{
+      display: none;
+    }
+  }
+
   

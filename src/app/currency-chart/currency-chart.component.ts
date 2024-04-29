@@ -88,10 +88,18 @@ export class CurrencyChartComponent implements OnInit {
         type: 'pie',
         // Specify bar chart type
         colors: {
-          AUD: '#e1b382',
-          USD: '#2d545e',
+          [currencyCode.USD]: '#ffb400',
+          [currencyCode.EUR]: '#d2980d',
+          [currencyCode.AUD]: '#a57c1b',
+          [currencyCode.NZD]: '#48446e',
+          [currencyCode.INR]: '#776bcd',
+          [currencyCode.GBP]: '#5e569b',
+          [currencyCode.CHF]: '#9080ff'
         },
       },
+      title: {
+        text: 'Most traded currency in the World', // Specify the title text here
+      }
     });
   }
 }
