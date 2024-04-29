@@ -8,15 +8,20 @@
         <a href="#">Contact</a>
     </div>
     <div [ngStyle]="{ 'margin-left': getFlexContainerMargin() }" class="flex-container">
-        <app-population-chart></app-population-chart>
+      <div class="justify-content-md-center">
+        <div class="col-md-12">
+          <app-population-chart></app-population-chart>
+        </div>
+      </div>
+        
       <!-- Flex container content -->
-        <div class="col-md card">
+        <div class="card">
             <app-currency-chart></app-currency-chart>
         </div>
-        <div class="col-md card">
+        <div class="card">
             <app-un-member-chart></app-un-member-chart>
         </div>
-        <div class="col-md card">
+        <div class="card">
             <app-independent-countries></app-independent-countries>
         </div>
     </div>

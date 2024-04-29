@@ -10,7 +10,7 @@ import { CountryService } from '../services/country.service';
 export class PopulationChartComponent implements OnInit {
   //  "population": 2617820,
   populationCount:number = 0;
-  filteredData: any[] = [];
+  populationData: any[] = [];
 
   constructor(private countryService: CountryService) { }
 
@@ -20,23 +20,25 @@ export class PopulationChartComponent implements OnInit {
 
   fetchCountryPopulationData() {
     this.countryService.getUNCountriesData().subscribe(item => {
-      const populationData = item.filter(data => data.population > 200000000)
+       this.populationData = item.filter(data => data.population > 200000000)
       .map(({name, population}) => ({name: name.common, population}));
-      console.log('popolation: ', populationData);
       this.generateBarChart();
     });
   }
 
   generateBarChart() {
     const chart = c3.generate({
-      bindto: '#populationChart', // Bind chart to the container with id 'chart'
+      bindto: '#populationChart',
       data: {
-        json: this.filteredData, // Use your filtered data as JSON input
+        json: this.populationData, // Use your filtered data as JSON input
         keys: {
           x: 'name', // Set 'name' as the x-axis
           value: ['population'] // Set 'population' as the y-axis
         },
-        type: 'bar'
+        type: 'bar',
+          colors: {
+            population:'#178c7585'
+          }
       },
       axis: {
         x: {

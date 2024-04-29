@@ -3,7 +3,7 @@
 
     // side navbar 
     .sidebar {
-        height: 100%;
+        height: 111%;
         width: 250px;
         position: absolute;
         z-index: 1;
@@ -41,9 +41,9 @@
             border-radius: 5px;
             backdrop-filter: blur(20px);
             background-color: rgba(255, 255, 255, 0.071);
-            box-shadow: 0 10px 10px rgba(129, 124, 124, 0.2);
             margin: 15px;
             height: auto;
+            width: 300px;
             padding: 5px;
         }
     }
@@ -67,10 +67,11 @@
     .sidebar a {
         display: none;
     }
-    .sidebar .closebtn {
-        display: none;
+    .flex-container {
+        display: inline-block;
+        transition: margin-left 0.5s !important;
     }
-    .openbtn {
-        display: none;
+    .card {
+        width: 150px;
     }
 }
