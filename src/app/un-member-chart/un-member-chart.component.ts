@@ -10,29 +10,25 @@ import * as c3 from 'c3';
 export class UnMemberChartComponent implements OnInit {
   unMemberCount = 0;
   nonUnMemberCount = 0;
-  isLoading = true;
+  isLoading:boolean = true;
 
   constructor(private countryService: CountryService) { }
 
   ngOnInit(): void {
-    this.fetchDummyData();
     this.fetchUnMemberData();
   }
 
-  fetchDummyData() {
-    // dummy data
-    this.unMemberCount = 50;
-    this.nonUnMemberCount = 50;
-    this.generateChartData();
-  }
-
   fetchUnMemberData() {
+    this.isLoading = true;
     this.countryService.getCountriesData().subscribe(undata => {
       this.unMemberCount = undata.filter(country => country.unMember === true).length;
       this.nonUnMemberCount = undata.filter(country => country.unMember === false).length;
-
-      this.isLoading = false;
       this.generateChartData();
+      this.isLoading = false;
+    },
+    error => {
+      console.error('Error fetching data:', error);
+      this.isLoading = false; // Hide loader in case of error
     });
   }
 

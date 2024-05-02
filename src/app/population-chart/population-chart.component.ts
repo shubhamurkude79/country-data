@@ -8,9 +8,8 @@ import { CountryService } from '../services/country.service';
   styleUrls: ['./population-chart.component.scss']
 })
 export class PopulationChartComponent implements OnInit {
-  //  "population": 2617820,
   populationCount:number = 0;
-  populationData: any[] = [];
+  populationData:any[] = [];
 
   constructor(private countryService: CountryService) { }
 
