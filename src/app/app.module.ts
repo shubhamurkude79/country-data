@@ -13,6 +13,7 @@ import { UnMemberChartComponent } from './un-member-chart/un-member-chart.compon
 import { CountryListRoutingModule } from './country-list/country-list-routing.module';
 import { CountryListModule } from './country-list/country-list.module';
 import { PopulationChartComponent } from './population-chart/population-chart.component';
+import { ContinentChartComponent } from './continent-chart/continent-chart.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PopulationChartComponent } from './population-chart/population-chart.co
     CurrencyChartComponent,
     IndependentCountriesComponent,
     UnMemberChartComponent,
-    PopulationChartComponent
+    PopulationChartComponent,
+    ContinentChartComponent
   ],
   imports: [
     BrowserModule,

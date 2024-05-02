@@ -22,8 +22,14 @@ export class CountryService {
     this.isOpenSubject.next(!this.isOpenSubject.value)
   }
 
+  // Only country's name and flag list
   getCountries(): Observable<any[]> {
     return this.http.get<any[]>(apiUrl);
+  }
+
+  // Any data of the World
+  getCountriesData(): Observable<any[]> {
+    return this.http.get<any[]>(allDataUrl);
   }
 
   // Independent and non-Independent countries count
@@ -38,8 +44,4 @@ export class CountryService {
     return this.http.get<any[]>(url);
   }
 
-  // UN Members of the World
-  getUNCountriesData(): Observable<any[]> {
-    return this.http.get<any[]>(allDataUrl);
-  }
 }

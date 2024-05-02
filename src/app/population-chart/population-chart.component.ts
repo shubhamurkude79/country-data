@@ -19,7 +19,7 @@ export class PopulationChartComponent implements OnInit {
   }
 
   fetchCountryPopulationData() {
-    this.countryService.getUNCountriesData().subscribe(item => {
+    this.countryService.getCountriesData().subscribe(item => {
        this.populationData = item.filter(data => data.population > 126000000)
       .map(({name, population}) => ({name: name.common, population}));
       this.generateBarChart();

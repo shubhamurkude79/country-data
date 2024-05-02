@@ -27,7 +27,7 @@ export class UnMemberChartComponent implements OnInit {
   }
 
   fetchUnMemberData() {
-    this.countryService.getUNCountriesData().subscribe(undata => {
+    this.countryService.getCountriesData().subscribe(undata => {
       this.unMemberCount = undata.filter(country => country.unMember === true).length;
       this.nonUnMemberCount = undata.filter(country => country.unMember === false).length;
 
