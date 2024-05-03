@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CountryService } from '../services/country.service';
 
 @Component({
@@ -8,8 +8,9 @@ import { CountryService } from '../services/country.service';
 })
 export class HomeComponent implements OnInit {
   isSidebarOpen = true; // sidebar toggle initial
+  isLoading:boolean = false;
 
-  constructor(private SidebarToggleService: CountryService) {}
+  constructor(private SidebarToggleService: CountryService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.SidebarToggleService.isOpen$.subscribe(isOpen => {
@@ -23,6 +24,11 @@ export class HomeComponent implements OnInit {
 
   getFlexContainerMargin() {
     return this.isSidebarOpen ? '250px' : '0'; // Adjust margin based on sidebar state
+  }
+
+  handleIsLoadingState(isLoading:boolean) {
+    this.isLoading = isLoading;
+    this.cdr.detectChanges();
   }
 
 

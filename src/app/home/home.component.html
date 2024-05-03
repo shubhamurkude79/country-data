@@ -22,7 +22,14 @@
             <app-currency-chart></app-currency-chart>
         </div>
         <div class="card">
-            <app-un-member-chart></app-un-member-chart>
+          <div *ngIf="isLoading">
+            <!-- Loader template -->
+            <div class="loadImage"></div>
+          </div>
+          <ng-container *ngIf="!isLoading">
+            <!-- Show <app-un-member-chart> when isLoading is false -->
+            <app-un-member-chart (isLoadingChange)="handleIsLoadingState($event)"></app-un-member-chart>
+          </ng-container>
         </div>
         <div class="card">
             <app-independent-countries></app-independent-countries>

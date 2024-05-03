@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CountryService } from '../services/country.service';
 import * as c3 from 'c3';
 
@@ -11,6 +11,7 @@ export class UnMemberChartComponent implements OnInit {
   unMemberCount = 0;
   nonUnMemberCount = 0;
   isLoading:boolean = true;
+  @Output() isLoadingChange:EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private countryService: CountryService) { }
 
@@ -20,16 +21,24 @@ export class UnMemberChartComponent implements OnInit {
 
   fetchUnMemberData() {
     this.isLoading = true;
+    this.emitIsLoadingState();
     this.countryService.getCountriesData().subscribe(undata => {
       this.unMemberCount = undata.filter(country => country.unMember === true).length;
       this.nonUnMemberCount = undata.filter(country => country.unMember === false).length;
-      this.generateChartData();
+      
       this.isLoading = false;
+      this.emitIsLoadingState();
+      this.generateChartData();
     },
     error => {
       console.error('Error fetching data:', error);
       this.isLoading = false; // Hide loader in case of error
+      this.emitIsLoadingState();
     });
+  }
+
+  emitIsLoadingState() {
+    this.isLoadingChange.emit(this.isLoading);
   }
 
   generateChartData(): void {
