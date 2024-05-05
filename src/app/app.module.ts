@@ -14,6 +14,7 @@ import { CountryListRoutingModule } from './country-list/country-list-routing.mo
 import { CountryListModule } from './country-list/country-list.module';
 import { PopulationChartComponent } from './population-chart/population-chart.component';
 import { ContinentChartComponent } from './continent-chart/continent-chart.component';
+import { LoginComponent } from './auth/pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ContinentChartComponent } from './continent-chart/continent-chart.compo
     IndependentCountriesComponent,
     UnMemberChartComponent,
     PopulationChartComponent,
-    ContinentChartComponent
+    ContinentChartComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
