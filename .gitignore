@@ -9,9 +9,6 @@ dist/
 *.d.ts
 *.map
 
-# Dependency lock files
-package-lock.json
-
 # Environment configuration
 src/environments/environment*.ts
 
