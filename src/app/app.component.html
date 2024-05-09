@@ -1,3 +1,4 @@
+<ng-container *ngIf="isAuthenticated$ | async; else loginTemplate">
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <!-- Container wrapper -->
@@ -46,6 +47,13 @@
   <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
+</ng-container>
+
+<ng-template #loginTemplate>
+  <!-- Login component or login form -->
+  <app-login></app-login>
+</ng-template>
+
 
 
 
