@@ -1,16 +1,21 @@
 <div class="login-container">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
-      <h2>Login</h2>
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" formControlName="username"
-         placeholder="Enter your username">
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" formControlName="password"
-         placeholder="Enter your password">
-      </div>
-      <button type="submit" class="btn btn-primary">Login</button>
+        <h2>Login</h2>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" formControlName="username"
+                placeholder="Enter your username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-icon-container">
+                <input type="password" id="password" name="password" formControlName="password"
+                    placeholder="Enter your password">
+                <span class="password-toggle-icon">
+                    <i class="fa-solid fa-eye" (click)="togglePasswordVisibility()"></i>
+                </span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
     </form>
-  </div>
+</div>

@@ -26,4 +26,9 @@ export class LoginComponent {
     }
   }
 
+  togglePasswordVisibility() {
+    const passwordInput = document.getElementById('password') as HTMLInputElement;
+    passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+  }
+
 }

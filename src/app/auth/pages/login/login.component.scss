@@ -19,7 +19,36 @@
   }
   
   .form-group {
-    margin-bottom: 15px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+  }
+
+  .input-icon-container {
+      display: flex;
+      flex-direction: row;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      align-items: center;
+      overflow: hidden;
+  }
+
+  .input-icon-container input[type="password"] {
+      outline: none;
+      border: none;
+      background: none;
+      font-size: 1em;
+      padding: .5em;
+      color: inherit;
+      flex: auto 1 1;
+      width: 100%;
+      background: none;
+      background-color: transperant;
+  }
+
+  .fa-eye {
+      padding: 10px;
+      cursor: pointer;
   }
   
   label {
@@ -27,8 +56,7 @@
     margin-bottom: 5px;
   }
   
-  input[type="text"],
-  input[type="password"] {
+  input[type="text"] {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
