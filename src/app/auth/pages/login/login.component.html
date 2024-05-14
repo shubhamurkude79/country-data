@@ -18,6 +18,8 @@
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
+        <button type="button" class="btn btn-secondary toggle-register"
+        (click)="toggleRegistration()">Back to Register</button>
     </form>
 </div>
 <ng-template #registerTemplate>
@@ -26,21 +28,21 @@
         <h2>Register</h2>
         <div class="form-group">
       <label for="Username">Username:</label>
-      <input type="text" id="Username" formControlName="Username" required>
+      <input type="text" id="Username" formControlName="Username" placeholder="Enter your username" required>
     </div>
   
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" id="email" formControlName="email" required>
+      <input type="email" id="email" formControlName="email" placeholder="Enter your email" required>
       </div>
 
       <div class="form-group">
       <label for="password">Password:</label>
-      <input type="password" id="password" formControlName="password" required>
+      <input type="password" id="password" formControlName="password" placeholder="Enter your password" required>
       </div>
-  
-      <button type="submit">Register</button>
+      <button type="submit" class="btn btn-primary">Register</button>
+      <button type="button" class="btn btn-secondary toggle-register" 
+      (click)="toggleRegistration()">Back to Login</button>
     </form>
   </ng-template>
-  <button type="button" (click)="toggleRegistration()">Back to Login</button>
 </div>

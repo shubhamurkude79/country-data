@@ -3,6 +3,9 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    .toggle-register{
+
+    }
   }
   
   .login-form {
@@ -62,6 +65,18 @@
     border: 1px solid #ccc;
     border-radius: 3px;
   }
+  input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
   
   button[type="submit"] {
     width: 100%;
@@ -75,4 +90,14 @@
   
   button[type="submit"]:hover {
     background-color: #0056b3;
+  }
+
+  button[type="button"] {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
   }
