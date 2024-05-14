@@ -1,4 +1,5 @@
 <div class="login-container">
+    <div *ngIf="!isRegistering; else registerTemplate">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
         <h2>Login</h2>
         <div class="form-group">
@@ -18,4 +19,28 @@
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
+</div>
+<ng-template #registerTemplate>
+    <!-- Registration form -->
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login-form">
+        <h2>Register</h2>
+        <div class="form-group">
+      <label for="Username">Username:</label>
+      <input type="text" id="Username" formControlName="Username" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" required>
+      </div>
+
+      <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password" required>
+      </div>
+  
+      <button type="submit">Register</button>
+    </form>
+  </ng-template>
+  <button type="button" (click)="toggleRegistration()">Back to Login</button>
 </div>
