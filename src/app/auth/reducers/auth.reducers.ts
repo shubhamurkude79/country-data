@@ -1,11 +1,11 @@
 import { createReducer, on } from "@ngrx/store";
 import { login, loginSuccess, loginFailure, logout, setUser } from "../actions/auth.actions";
-import { User } from "../models/auth.model";
+import { User, RegistrationData } from "../models/auth.model";
 import {  register, registerSuccess, registerFailure } from "../actions/auth.actions";
 
 export interface AuthState {
     isAuthenticated: boolean;
-    user: User | null;
+    user: User | RegistrationData | null;
     token: string | null;
     error: any;
 }

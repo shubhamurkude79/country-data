@@ -29,8 +29,8 @@ export class LoginComponent {
 
   onSubmit() {
     if(this.isRegistering && this.registerForm.valid){
-      const {registrationData} = this.registerForm.value;
-      this.store.dispatch(register({ registrationData }))
+      const {name, email, password} = this.registerForm.value;
+      this.store.dispatch(register({name, email, password}))
     } else if(this.loginForm.valid){
       const {email, password} = this.loginForm.value;
       this.store.dispatch(login({ email, password }));

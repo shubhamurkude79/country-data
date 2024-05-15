@@ -4,14 +4,14 @@
             <h2>Login</h2>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" id="email" name="email" formControlName="email"
-                    placeholder="Enter your email">
+                <input type="email" id="email" name="email" formControlName="email"
+                    placeholder="Enter your email" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
                 <div class="input-icon-container">
                     <input type="password" id="password" name="password" formControlName="password"
-                        placeholder="Enter your password">
+                        placeholder="Enter your password" required>
                     <span class="password-toggle-icon">
                         <i class="fa-solid fa-eye" (click)="togglePasswordVisibility()"></i>
                     </span>
