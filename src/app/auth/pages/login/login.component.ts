@@ -16,12 +16,12 @@ export class LoginComponent {
 
   constructor(private fb: FormBuilder, private store: Store) {
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required, Validators.email],
       password: ['', Validators.required]
     });
 
     this.registerForm = this.fb.group({
-      username: ['', Validators.required],
+      name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
@@ -32,8 +32,8 @@ export class LoginComponent {
       const {registrationData} = this.registerForm.value;
       this.store.dispatch(register({ registrationData }))
     } else if(this.loginForm.valid){
-      const {username, password} = this.loginForm.value;
-      this.store.dispatch(login({ username, password }));
+      const {email, password} = this.loginForm.value;
+      this.store.dispatch(login({ email, password }));
     }
   }
 

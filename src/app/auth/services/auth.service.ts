@@ -13,8 +13,8 @@ const loginSysUrl = environment.loginSysUrl;
 export class AuthService {
     constructor(private http: HttpClient) {}
 
-    login(username:string, password:string): Observable<{user:User, token:string}> {
-        return this.http.post<{user:User, token:string}>(`${loginSysUrl}/login`, {username, password});
+    login(email:string, password:string): Observable<{user:User, token:string}> {
+        return this.http.post<{user:User, token:string}>(`${loginSysUrl}/login`, {email, password});
     }
 
     register(registrationData:RegistrationData): Observable<{registrationData:RegistrationData}> {
