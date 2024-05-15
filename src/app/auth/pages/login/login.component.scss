@@ -19,6 +19,11 @@
     h2 {
         color:black;
     }
+    .btn:disabled {
+      opacity: 0.6;
+      pointer-events: visible !important;
+      cursor: not-allowed !important;
+    }
   }
   
   .form-group {

@@ -17,7 +17,7 @@
                     </span>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!isFormValid()">Login</button>
             <button type="button" class="btn btn-secondary toggle-register" (click)="toggleRegistration()">Back to
                 Register</button>
         </form>
@@ -43,7 +43,7 @@
                     </span>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!isFormValid()">Register</button>
             <button type="button" class="btn btn-secondary toggle-register" (click)="toggleRegistration()">Back to
                 Login</button>
         </form>

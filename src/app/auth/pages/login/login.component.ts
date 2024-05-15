@@ -53,4 +53,8 @@ export class LoginComponent {
     passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
   }
 
+  isFormValid(): boolean {
+    return this.isRegistering ? this.registerForm.valid : this.loginForm.valid;
+  }
+
 }
