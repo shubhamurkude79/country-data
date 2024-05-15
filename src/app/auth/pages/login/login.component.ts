@@ -16,7 +16,7 @@ export class LoginComponent {
 
   constructor(private fb: FormBuilder, private store: Store) {
     this.loginForm = this.fb.group({
-      email: ['', Validators.required, Validators.email],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
 
@@ -30,15 +30,22 @@ export class LoginComponent {
   onSubmit() {
     if(this.isRegistering && this.registerForm.valid){
       const {name, email, password} = this.registerForm.value;
-      this.store.dispatch(register({name, email, password}))
+      this.store.dispatch(register({name, email, password}));
+      this.registerForm.reset();
     } else if(this.loginForm.valid){
       const {email, password} = this.loginForm.value;
       this.store.dispatch(login({ email, password }));
+      this.loginForm.reset();
     }
   }
 
   toggleRegistration() {
     this.isRegistering = !this.isRegistering;
+    if (this.isRegistering) {
+      this.registerForm.reset();
+    } else {
+      this.loginForm.reset();
+    }
   }
 
   togglePasswordVisibility() {
