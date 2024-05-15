@@ -9,9 +9,6 @@ dist/
 *.d.ts
 *.map
 
-# Environment configuration
-src/environments/environment*.ts
-
 # compiled output
 /dist
 /tmp
