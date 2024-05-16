@@ -4,35 +4,41 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 import { of } from "rxjs";
 import { AuthService } from "../services/auth.service";
 import * as AuthActions from '../actions/auth.actions';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Injectable()
-
 export class AuthEffects {
-    login$ = createEffect(() =>
-        this.actions$.pipe(
-            ofType(AuthActions.login),
-            switchMap(({ email, password }) =>
-                this.authService.login(email, password).pipe(
-                    map(({ user, token }) => AuthActions.loginSuccess({ user, token })),
-                    catchError(error => of(AuthActions.loginFailure({ error })))
-                )
-            )
+  login$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.login),
+      switchMap(({ email, password }) =>
+        this.authService.login(email, password).pipe(
+          map(({ user, token }) => AuthActions.loginSuccess({ user, token })),
+          catchError((error) => of(AuthActions.loginFailure({ error })))
         )
-    );
+      )
+    )
+  );
 
-    register$ = createEffect(() => 
-        this.actions$.pipe(
-            ofType(AuthActions.register),
-            switchMap(({name, email, password}) => 
-                this.authService.register(name, email, password).pipe(
-                    map(() => AuthActions.registerSuccess()),
-                    catchError(error => of(AuthActions.registerFailure({ error })))
-                )
-            )
+  register$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.register),
+      switchMap(({ name, email, password }) =>
+        this.authService.register(name, email, password).pipe(
+          map(() => AuthActions.registerSuccess()),
+          catchError((error) => {
+            this.toastr.error('Registration failed', 'Error');
+            return of(AuthActions.registerFailure({ error }))
+        })
         )
-    );
+      )
+    )
+  );
 
-    constructor(private actions$: Actions, private authService: AuthService) {
-    }
+  constructor(
+    private actions$: Actions,
+    private authService: AuthService,
+    private toastr: ToastrService
+  ) {}
 }

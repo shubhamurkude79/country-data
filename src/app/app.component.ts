@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AuthState } from './auth/reducers/auth.reducers';
 import { logout } from './auth/actions/auth.actions';
+import { ToastrModule } from 'ngx-toastr'; 
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent {
 
   title = 'country-app';
   constructor(private store: Store<{auth: AuthState}>, 
-    private SidebarToggleService: CountryService) {
+    private SidebarToggleService: CountryService, private toastr: ToastrModule) {
     this.isAuthenticated$ = this.store.select(state => state.auth.isAuthenticated);
   }
 
