@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -47,10 +47,7 @@ import { AuthEffects } from './auth/effects/auth.effects';
     StoreModule.forRoot({ auth: authReducer }),
     EffectsModule.forRoot([AuthEffects]),
     BrowserAnimationsModule,
-    ToastrModule.forRoot({
-      positionClass: 'toast-top-right',
-      preventDuplicates: true,
-    }),
+    ToastrModule.forRoot(),
 
   ],
   providers: [CountryService],

@@ -47,11 +47,12 @@
   <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
+<div aria-live="polite" toastContainer></div>
 <router-outlet></router-outlet>
 </ng-container>
-<!-- toaster -->
-<toastr-container></toastr-container>
+
 <ng-template #loginTemplate>
+    <div aria-live="polite" toastContainer></div>
   <!-- Login component or login form -->
   <app-login></app-login>
 </ng-template>
