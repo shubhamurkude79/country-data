@@ -5,6 +5,7 @@ import { of } from "rxjs";
 import { AuthService } from "../services/auth.service";
 import * as AuthActions from '../actions/auth.actions';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from "@angular/router";
 
 
 @Injectable()
@@ -16,6 +17,7 @@ export class AuthEffects {
         this.authService.login(email, password).pipe(
           map(({ user, token }) => {
             this.toastr.success('Welcome to your Country app.', 'Login Successful!');
+            this.router.navigate(['/']);
             return AuthActions.loginSuccess({ user, token })
           }
         ),
@@ -63,6 +65,7 @@ export class AuthEffects {
   constructor(
     private actions$: Actions,
     private authService: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 }
