@@ -1,51 +1,62 @@
-<div class="login-container">
-    <div *ngIf="!isRegistering; else registerTemplate">
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
-            <h2>Login</h2>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" formControlName="email"
-                    placeholder="Enter your email" required>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="login-container">
+                <img src="assets/globe-image-comp.jpeg" alt="country-app-image" class="img-fluid">
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <div class="input-icon-container">
-                    <input type="password" id="password" name="password" formControlName="password"
-                        placeholder="Enter your password" required>
-                    <span class="password-toggle-icon">
-                        <i class="fa-solid fa-eye" (click)="togglePasswordVisibility()"></i>
-                    </span>
+        </div>
+        <div class="col-md-6">
+            <div class="login-container">
+                <div *ngIf="!isRegistering; else registerTemplate">
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+                        <h2>Login</h2>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" formControlName="email"
+                                placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-icon-container">
+                                <input type="password" id="password" name="password" formControlName="password"
+                                    placeholder="Enter your password" required>
+                                <span class="password-toggle-icon">
+                                    <i class="fa-solid fa-eye" (click)="togglePasswordVisibility()"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" [disabled]="!isFormValid()">Login</button>
+                        <button type="button" class="btn btn-secondary toggle-register" (click)="toggleRegistration()">Back to
+                            Register</button>
+                    </form>
                 </div>
+                <ng-template #registerTemplate>
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login-form">
+                        <h2>Register</h2>
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" formControlName="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" formControlName="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <div class="input-icon-container">
+                                <input type="password" id="password" name="password" formControlName="password"
+                                    placeholder="Enter your password" required>
+                                <span class="password-toggle-icon">
+                                    <i class="fa-solid fa-eye" (click)="togglePasswordVisibility()"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" [disabled]="!isFormValid()">Register</button>
+                        <button type="button" class="btn btn-secondary toggle-register" (click)="toggleRegistration()">Back to
+                            Login</button>
+                    </form>
+                </ng-template>
             </div>
-            <button type="submit" class="btn btn-primary" [disabled]="!isFormValid()">Login</button>
-            <button type="button" class="btn btn-secondary toggle-register" (click)="toggleRegistration()">Back to
-                Register</button>
-        </form>
+        </div>
     </div>
-    <ng-template #registerTemplate>
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login-form">
-            <h2>Register</h2>
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" formControlName="name" placeholder="Enter your name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" formControlName="email" placeholder="Enter your email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <div class="input-icon-container">
-                    <input type="password" id="password" name="password" formControlName="password"
-                        placeholder="Enter your password" required>
-                    <span class="password-toggle-icon">
-                        <i class="fa-solid fa-eye" (click)="togglePasswordVisibility()"></i>
-                    </span>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary" [disabled]="!isFormValid()">Register</button>
-            <button type="button" class="btn btn-secondary toggle-register" (click)="toggleRegistration()">Back to
-                Login</button>
-        </form>
-    </ng-template>
 </div>
