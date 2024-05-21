@@ -1,20 +1,28 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Store } from '@ngrx/store';
 import { login, register } from '../../actions/auth.actions';
+import { AuthState } from '../../reducers/auth.reducers';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit, AfterViewInit {
 
   loginForm: FormGroup;
   registerForm: FormGroup;
   isRegistering: boolean = false;
+  socialUser: SocialUser | undefined;
 
-  constructor(private fb: FormBuilder, private store: Store) {
+  constructor(
+    private fb: FormBuilder, 
+    private store: Store<{ auth: AuthState }>,
+    private authService: SocialAuthService
+  ) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -25,6 +33,37 @@ export class LoginComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
+  }
+
+  ngOnInit(): void {
+    this.authService.authState.subscribe((user) => {
+      this.socialUser = user;
+      if(user){
+        this.store.dispatch(login({email: user.email, password: user.idToken}));
+      }
+    });
+  }
+
+  ngAfterViewInit(): void {
+    google.accounts.id.initialize({
+      client_id: environment.googleClientId,
+      callback: this.handleCredentialResponse.bind(this)
+    });
+
+    const googleSignInButton = document.getElementById('google-signin-button');
+    if (googleSignInButton) {
+      google.accounts.id.renderButton(googleSignInButton, {
+        theme: 'outline',
+        size: 'large'
+      });
+    } else {
+      console.error('Google Sign-In button element not found');
+    }
+  }
+
+  handleCredentialResponse(response: any): void {
+    console.log(response);
+    // Handle the response and dispatch login action
   }
 
   onSubmit() {
@@ -55,6 +94,10 @@ export class LoginComponent {
 
   isFormValid(): boolean {
     return this.isRegistering ? this.registerForm.valid : this.loginForm.valid;
+  }
+
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
 }

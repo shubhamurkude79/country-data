@@ -64,7 +64,7 @@ import { environment } from 'src/environments/environment';
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(environment.googleClientId)
+            provider: new GoogleLoginProvider(environment.googleClientId, {oneTapEnabled: false})
           }
         ]
       } as SocialAuthServiceConfig,
