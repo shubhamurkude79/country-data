@@ -6,7 +6,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -25,7 +24,6 @@ import { LoginComponent } from './auth/pages/login/login.component';
 import { authReducer } from './auth/reducers/auth.reducers';
 import { AuthEffects } from './auth/effects/auth.effects';
 import { AuthService } from './auth/services/auth.service';
-import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -44,7 +42,6 @@ import { environment } from 'src/environments/environment';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SocialLoginModule,
     AppRoutingModule,
     CountryListModule,
     CountryListRoutingModule,
@@ -57,18 +54,6 @@ import { environment } from 'src/environments/environment';
   providers: [
     CountryService,
     AuthService,
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(environment.googleClientId, {oneTapEnabled: false})
-          }
-        ]
-      } as SocialAuthServiceConfig,
-    }
   ],
   bootstrap: [AppComponent]
 })
