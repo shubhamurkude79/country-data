@@ -45,11 +45,25 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    // Check if the Google API is loaded
+    if (window['google']) {
+      this.initializeGoogleSignIn();
+    } else {
+      // Wait until the Google API is loaded
+      const interval = setInterval(() => {
+        if (window['google']) {
+          clearInterval(interval);
+          this.initializeGoogleSignIn();
+        }
+      }, 100);
+    }
+  }
+
+  initializeGoogleSignIn(): void {
     google.accounts.id.initialize({
       client_id: environment.googleClientId,
       callback: this.handleCredentialResponse.bind(this)
     });
-
     const googleSignInButton = document.getElementById('google-signin-button');
     if (googleSignInButton) {
       google.accounts.id.renderButton(googleSignInButton, {
@@ -62,8 +76,29 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   handleCredentialResponse(response: any): void {
-    console.log(response);
-    // Handle the response and dispatch login action
+    console.log("New error: ", response);
+    const credential = response.credential;
+    const payload = this.decodeJwtResponse(credential);
+    if (payload) {
+      const { email, sub: id } = payload;
+      // Dispatch login action with Google user details
+      this.store.dispatch(login({ email, password: id }));
+    }
+  }
+
+  decodeJwtResponse(token: string): any {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split('')
+        .map(function (c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join('')
+    );
+
+    return JSON.parse(jsonPayload);
   }
 
   onSubmit() {

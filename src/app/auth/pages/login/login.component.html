@@ -26,10 +26,10 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary" [disabled]="!isFormValid()">Login</button>
-                        <div id="google-signin-button" (click)="signInWithGoogle()"></div>
                         <button type="button" class="btn btn-secondary toggle-register" (click)="toggleRegistration()">Back to
                             Register</button>
                     </form>
+                    <div id="google-signin-button" (click)="signInWithGoogle()"></div>
                 </div>
                 <ng-template #registerTemplate>
                     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login-form" autocomplete="on">
